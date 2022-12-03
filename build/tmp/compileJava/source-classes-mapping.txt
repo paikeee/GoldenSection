@@ -1,0 +1,8 @@
+GoldenSectionThread.java
+ GoldenSectionThread
+MergeResults.java
+ MergeResults
+GoldenSection.java
+ GoldenSection
+Main.java
+ Main
