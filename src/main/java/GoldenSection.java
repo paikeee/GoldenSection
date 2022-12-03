@@ -18,7 +18,7 @@ class GoldenSection extends Thread {
         max = findMax(from, to);
     }
 
-    double func(double x) { // function
+    private double func(double x) { // function
         return Math.pow(x + 1, 3) + 5 * Math.pow(x, 2);
     }
 
@@ -27,10 +27,12 @@ class GoldenSection extends Thread {
         do {
             x1 = b - (b - a) / PHI;
             x2 = a + (b - a) / PHI;
-            if (func(x1) >= func(x2))
+            if (func(x1) >= func(x2)) {
                 a = x1;
-            else
+            }
+            else {
                 b = x2;
+            }
         } while (!(Math.abs(b - a) < EPS));
         return (a + b) / 2;
     }
@@ -40,10 +42,12 @@ class GoldenSection extends Thread {
         do {
             x1 = b - (b - a) / PHI;
             x2 = a + (b - a) / PHI;
-            if (func(x1) <= func(x2))
+            if (func(x1) <= func(x2)) {
                 a = x1;
-            else
+            }
+            else {
                 b = x2;
+            }
         } while (!(Math.abs(b - a) < EPS));
         return (a + b) / 2;
     }
