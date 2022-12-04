@@ -32,16 +32,18 @@ public class Main {
        double elapsedTimeTwoThreads = 0;
        for (int i = 0; i < 1000; i++) {
 
+           int from = getRandomNum(-10, 4);
+           int to = getRandomNum(from, 5);
            // one thread
-           oneThreadTest = new GoldenSection(getRandomNum(-10, 5), getRandomNum(-10, 5));
+           oneThreadTest = new GoldenSection(from, to);
            startTime = System.nanoTime();
            oneThreadTest.start();
            oneThreadTest.join();
            elapsedTimeOneThread += ((double) (System.nanoTime() - startTime)) / 1_000_000;
 
            // two threads
-           twoThreadTest1 = new GoldenSectionMin(getRandomNum(-10, 5), getRandomNum(-10, 5));
-           twoThreadTest2 = new GoldenSectionMax(getRandomNum(-10, 5), getRandomNum(-10, 5));
+           twoThreadTest1 = new GoldenSectionMin(from, to);
+           twoThreadTest2 = new GoldenSectionMax(from, to);
            startTime = System.nanoTime();
            twoThreadTest1.start();
            twoThreadTest2.start();
@@ -49,7 +51,7 @@ public class Main {
            twoThreadTest2.join();
            elapsedTimeTwoThreads += ((double) (System.nanoTime() - startTime)) / 1_000_000;
        }
-       System.out.println("\n\nMedian One thread: " + elapsedTimeOneThread / 1000 +
+       System.out.println("\nMedian One thread: " + elapsedTimeOneThread / 1000 +
                "\nMedian Two threads: " + elapsedTimeTwoThreads / 1000);
    }
 
